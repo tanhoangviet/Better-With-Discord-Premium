@@ -29,47 +29,19 @@ Plugin này làm đúng ý bạn cho mobile:
    - Giới hạn số block/code quá lớn để tránh lag/overflow trên mobile.
    - Block quá dài sẽ tự truncate an toàn.
 
-## Kettu v1.4.2 - URL phải dùng
+## Kettu v1.4.2 - link chuẩn
 
-Kettu của bạn đang fetch JS trực tiếp từ source URL nên hãy dán link `.js`:
+- Source JS: `https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/plugin/index.js`
+- Manifest JSON: `https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/plugin/manifest.json`
 
-`https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/kettu-source.js`
+> Kettu fetch JS trực tiếp từ source URL, nên dùng link `.js` ở trên.
 
-Nếu dán URL folder (`.../Better-With-Discord-Premium/`) sẽ lỗi `Failed to fetch JS`.
+## Build/deploy
 
-## URL cài plugin (chuẩn theo revenge-plugins)
+1. `npm install`
+2. `npm run build`
+3. push lên `main/work` để workflow deploy Pages.
 
-- Plugin URL chuẩn: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium`
-- Manifest URL chuẩn: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium/manifest.json`
+## Tránh conflict khi pull
 
-## Setup nhanh để deploy GitHub
-
-1. Push code lên repo `tanhoangviet/Better-With-Discord-Premium` (branch `main` hoặc `work`).
-2. Chạy build:
-   ```bash
-   npm install
-   npm run build
-   ```
-3. Push lên `main/work`, workflow `.github/workflows/pages.yml` sẽ publish website lên `gh-pages`.
-
-## Auto build khi tạo Release
-
-Repo có workflow `.github/workflows/release.yml`:
-- Tự test
-- Tự đóng gói zip
-- Tự upload zip vào GitHub Release
-
-## Ghi chú tệp nhị phân
-
-`dist/*.zip` được tạo khi build/release và **không commit vào git** để tránh lỗi diff:
-`Tệp nhị phân không được hỗ trợ`.
-
-## Ghi chú tích hợp host plugin
-
-`index.js` kỳ vọng host cung cấp:
-- `patchMessageTransformer(transformerFn)`
-- `getAttachmentText(attachment)`
-- `downloadAttachment(attachment)`
-- `logger(msg)` (optional)
-
-Nếu host API khác, chỉ cần map lại trong `mountMessageEnhancer(api)`.
+`docs/` là build artifact và đã ignore trong git để tránh conflict khi pull.
