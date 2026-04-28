@@ -1,3 +1,7 @@
+// Better with Discord Premium
+// Manifest JSON: https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/plugin/manifest.json
+// Source JS: https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/plugin/index.js
+
 "use strict";
 
 /**
