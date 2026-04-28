@@ -1,0 +1,43 @@
+name: Build and Release Plugin
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps
+        run: npm install
+
+      - name: Prepare manifest URLs
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PLUGIN_VERSION: ${{ github.ref_name }}
+        run: npm run prepare:manifest
+
+      - name: Validate + test + pack
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Better-with-Discord-Premium-mobile-plugin
+          path: dist/Better-with-Discord-Premium-mobile-plugin.zip
+
+      - name: Attach zip to release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/Better-with-Discord-Premium-mobile-plugin.zip
