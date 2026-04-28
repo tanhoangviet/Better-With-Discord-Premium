@@ -1,75 +1,35 @@
-# Better with Discord Premium (Mobile Plugin)
+# Better With Discord Premium
 
-Plugin này làm đúng ý bạn cho mobile:
+Plugin mobile giúp Discord hiển thị code/text xịn hơn giống desktop.
 
-## Tính năng
+## Kettu (v1.4.2) - URL dùng ngay
 
-1. **Code block như Discord PC**
-   - Tự nhận diện block theo cú pháp:
-     ```md
-     ```lua
-     -- code
-     ```
-     ```
-     hoặc `py/js/ts/txt`.
-   - Mỗi block có **nút Copy** để copy full code.
+Kettu của bạn fetch JS trực tiếp từ URL source.
 
-2. **Highlight syntax mở rộng**
-   - Hỗ trợ: `lua`, `js/javascript`, `ts/typescript`, `py/python/python3/py3`, `json`, `txt/text`.
-   - Có normalize alias (`python -> py`, `python3 -> py`, `py3 -> py`, ...).
+Dùng URL này để cài:
 
-3. **Text file preview như desktop**
-   - Khi attach các file `.txt`, `.lua`, `.js`, `.ts`, `.py` (hoặc MIME `text/*`), plugin render giao diện header giống desktop:
-     - Tên file
-     - Dung lượng file
-     - Nút **Copy**
-     - Nút **Download**
+`https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/plugin/index.js`
 
-4. **Chống overflow payload lớn**
-   - Giới hạn số block/code quá lớn để tránh lag/overflow trên mobile.
-   - Block quá dài sẽ tự truncate an toàn.
+JSON manifest đi kèm:
 
-## Kettu v1.4.2 - URL phải dùng
+`https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/plugin/manifest.json`
 
-Kettu của bạn đang fetch JS trực tiếp từ source URL nên hãy dán link `.js`:
+## Fix website + fetch JS
 
-`https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/kettu-source.js`
+- Build script giờ tạo endpoint `kettu-source.js` trên GitHub Pages.
+- Đồng thời file JS có comment chứa link JSON để dễ copy.
 
-Nếu dán URL folder (`.../Better-With-Discord-Premium/`) sẽ lỗi `Failed to fetch JS`.
+## Fix pull conflict (không cần resolve tay)
 
-## URL cài plugin (chuẩn theo revenge-plugins)
+`docs/` bây giờ là **build artifact** và đã ignore trong git.
+Điều này tránh conflict khi pull giữa các lần build/deploy.
 
-- Plugin URL chuẩn: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium`
-- Manifest URL chuẩn: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium/manifest.json`
+## Deploy
 
-## Setup nhanh để deploy GitHub
+```bash
+npm install
+npm run build
+```
 
-1. Push code lên repo `tanhoangviet/Better-With-Discord-Premium` (branch `main` hoặc `work`).
-2. Chạy build:
-   ```bash
-   npm install
-   npm run build
-   ```
-3. Push lên `main/work`, workflow `.github/workflows/pages.yml` sẽ publish website lên `gh-pages`.
-
-## Auto build khi tạo Release
-
-Repo có workflow `.github/workflows/release.yml`:
-- Tự test
-- Tự đóng gói zip
-- Tự upload zip vào GitHub Release
-
-## Ghi chú tệp nhị phân
-
-`dist/*.zip` được tạo khi build/release và **không commit vào git** để tránh lỗi diff:
-`Tệp nhị phân không được hỗ trợ`.
-
-## Ghi chú tích hợp host plugin
-
-`index.js` kỳ vọng host cung cấp:
-- `patchMessageTransformer(transformerFn)`
-- `getAttachmentText(attachment)`
-- `downloadAttachment(attachment)`
-- `logger(msg)` (optional)
-
-Nếu host API khác, chỉ cần map lại trong `mountMessageEnhancer(api)`.
+Sau đó push lên `main/work`.
+Workflow Pages sẽ build lại `docs/` và deploy lên `gh-pages` tự động.
