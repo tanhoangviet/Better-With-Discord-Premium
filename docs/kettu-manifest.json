@@ -8,8 +8,8 @@
     }
   ],
   "description": "Mobile plugin that upgrades code blocks with copy buttons, syntax highlighting, and rich text-file previews similar to Discord Desktop.",
-  "main": "https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/index.js",
-  "source": "https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/index.js",
+  "main": "https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/kettu-source.js",
+  "source": "https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/kettu-source.js",
   "updateUrl": "https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/kettu-manifest.json",
   "readme": "https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/README.vi.md",
   "repository": "https://github.com/tanhoangviet/Better-With-Discord-Premium"

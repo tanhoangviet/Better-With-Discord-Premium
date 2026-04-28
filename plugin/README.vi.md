@@ -29,22 +29,18 @@ Plugin này làm đúng ý bạn cho mobile:
    - Giới hạn số block/code quá lớn để tránh lag/overflow trên mobile.
    - Block quá dài sẽ tự truncate an toàn.
 
-## Kettu v1.4.2 - URL khuyên dùng
+## Kettu v1.4.2 - URL phải dùng
 
-Dùng URL này trong mục Add plugin:
+Kettu của bạn đang fetch JS trực tiếp từ source URL nên hãy dán link `.js`:
 
-`https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/kettu-manifest.json`
+`https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/kettu-source.js`
 
-URL này không phụ thuộc GitHub Pages, nên tránh lỗi `Page not found`.
+Nếu dán URL folder (`.../Better-With-Discord-Premium/`) sẽ lỗi `Failed to fetch JS`.
 
 ## URL cài plugin (chuẩn theo revenge-plugins)
 
 - Plugin URL chuẩn: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium`
 - Manifest URL chuẩn: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium/manifest.json`
-
-Theo pattern chuẩn giống repo `Lioncat6/revenge-plugins`: `https://<user>.github.io/<repo>/<plugin-folder>`.
-
-Nếu client báo `Failed to fetch manifest` hoặc 404, dùng URL `kettu-manifest.json` ở trên để test ngay.
 
 ## Setup nhanh để deploy GitHub
 
@@ -54,7 +50,7 @@ Nếu client báo `Failed to fetch manifest` hoặc 404, dùng URL `kettu-manife
    npm install
    npm run build
    ```
-3. Push lên `main/work`, workflow `.github/workflows/pages.yml` sẽ publish website `github.io`.
+3. Push lên `main/work`, workflow `.github/workflows/pages.yml` sẽ publish website lên `gh-pages`.
 
 ## Auto build khi tạo Release
 

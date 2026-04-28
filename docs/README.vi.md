@@ -29,25 +29,28 @@ Plugin này làm đúng ý bạn cho mobile:
    - Giới hạn số block/code quá lớn để tránh lag/overflow trên mobile.
    - Block quá dài sẽ tự truncate an toàn.
 
+## Kettu v1.4.2 - URL phải dùng
+
+Kettu của bạn đang fetch JS trực tiếp từ source URL nên hãy dán link `.js`:
+
+`https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/kettu-source.js`
+
+Nếu dán URL folder (`.../Better-With-Discord-Premium/`) sẽ lỗi `Failed to fetch JS`.
+
 ## URL cài plugin (chuẩn theo revenge-plugins)
 
 - Plugin URL chuẩn: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium`
 - Manifest URL chuẩn: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium/manifest.json`
-- Fallback raw: `https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/manifest.json`
-
-Theo pattern chuẩn giống repo `Lioncat6/revenge-plugins`: `https://<user>.github.io/<repo>/<plugin-folder>`.
-
-Nếu client báo `Failed to fetch manifest` hoặc 404, dùng URL raw fallback để test ngay.
 
 ## Setup nhanh để deploy GitHub
 
-1. Push code lên repo `tanhoangviet/Better-With-Discord-Premium` (branch `main`).
+1. Push code lên repo `tanhoangviet/Better-With-Discord-Premium` (branch `main` hoặc `work`).
 2. Chạy build:
    ```bash
    npm install
    npm run build
    ```
-3. Push lên `main`, workflow `.github/workflows/pages.yml` sẽ publish website `github.io`.
+3. Push lên `main/work`, workflow `.github/workflows/pages.yml` sẽ publish website lên `gh-pages`.
 
 ## Auto build khi tạo Release
 

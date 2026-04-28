@@ -2,20 +2,22 @@
 
 Plugin mobile giúp Discord hiển thị code/text xịn hơn giống desktop.
 
-## Kettu (v1.4.2) - URL nên dùng ngay
+## Kettu (v1.4.2) - URL đúng để cài
 
-Bạn đang dùng **Kettu v1.4.2**.
+Bạn đang dùng **Kettu v1.4.2** và màn hình lỗi của bạn là do Kettu đang fetch **JS trực tiếp** từ URL bạn nhập.
 
-Dùng URL này để add plugin (ổn định nhất, không phụ thuộc Pages):
+Vì vậy phải dán URL `.js` (không phải URL folder):
 
-`https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/kettu-manifest.json`
+`https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/kettu-source.js`
 
-## Install chuẩn kiểu Revenge/Bunny/Vendetta
+## URL khác (nếu cần)
 
-- **Plugin URL chuẩn:** `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium`
-- **Manifest URL trực tiếp:** `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium/manifest.json`
+- Manifest cho Pages: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium/manifest.json`
+- Plugin folder chuẩn Revenge/Bunny: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium`
 
-> Nếu thấy `Page not found`, thường là do GitHub Pages chưa bật/chưa deploy xong. Với Kettu thì dùng `kettu-manifest.json` ở trên để test ngay.
+## Fix workflow `.yml`
+
+Workflow Pages đã được đổi sang deploy bằng nhánh `gh-pages` (ổn định hơn trong nhiều repo) thay vì phụ thuộc deploy artifact kiểu Pages Actions.
 
 ## Deploy lên GitHub
 

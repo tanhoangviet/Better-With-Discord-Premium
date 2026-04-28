@@ -16,6 +16,7 @@ fs.mkdirSync(pluginDir, { recursive: true });
 
 const pluginIndex = fs.readFileSync(path.resolve("plugin/index.js"), "utf8");
 fs.writeFileSync(path.join(pluginDir, "index.js"), pluginIndex);
+fs.writeFileSync(path.join(pluginDir, "kettu-source.js"), pluginIndex);
 
 const pagesManifest = {
   ...srcManifest,
@@ -27,21 +28,20 @@ const pagesManifest = {
 
 const rawManifest = {
   ...srcManifest,
-  main: `${rawBase}/${pluginSlug}/index.js`,
-  source: `${rawBase}/${pluginSlug}/index.js`,
+  main: `${rawBase}/${pluginSlug}/kettu-source.js`,
+  source: `${rawBase}/${pluginSlug}/kettu-source.js`,
   updateUrl: `${rawBase}/${pluginSlug}/kettu-manifest.json`,
   readme: `${rawBase}/${pluginSlug}/README.vi.md`
 };
 
-// Standard Vendetta/Bunny style: each plugin has its own folder URL.
 fs.writeFileSync(path.join(pluginDir, "manifest.json"), JSON.stringify(pagesManifest, null, 2) + "\n");
 fs.writeFileSync(path.join(pluginDir, "kettu-manifest.json"), JSON.stringify(rawManifest, null, 2) + "\n");
 fs.copyFileSync(path.resolve("plugin/README.vi.md"), path.join(pluginDir, "README.vi.md"));
 
-// Backward compatibility for users who used old root URLs.
 fs.writeFileSync(path.join(docsDir, "manifest.json"), JSON.stringify(pagesManifest, null, 2) + "\n");
 fs.writeFileSync(path.join(docsDir, "kettu-manifest.json"), JSON.stringify(rawManifest, null, 2) + "\n");
 fs.writeFileSync(path.join(docsDir, "index.js"), pluginIndex);
+fs.writeFileSync(path.join(docsDir, "kettu-source.js"), pluginIndex);
 fs.copyFileSync(path.resolve("plugin/README.vi.md"), path.join(docsDir, "README.vi.md"));
 
 const html = `<!doctype html>
@@ -59,15 +59,15 @@ const html = `<!doctype html>
 <body>
   <h1>Better with Discord Premium</h1>
   <div class="box">
+    <p><strong>Kettu source URL (JS trực tiếp - khuyên dùng):</strong></p>
+    <pre>${rawBase}/${pluginSlug}/kettu-source.js</pre>
     <p><strong>Plugin URL chuẩn (Revenge/Bunny/Vendetta):</strong></p>
     <pre>${baseUrl}/${pluginSlug}</pre>
     <p><strong>Manifest URL trực tiếp:</strong></p>
     <pre>${baseUrl}/${pluginSlug}/manifest.json</pre>
-    <p><strong>Kettu fallback (không phụ thuộc GitHub Pages):</strong></p>
-    <pre>${rawBase}/${pluginSlug}/kettu-manifest.json</pre>
   </div>
 </body>
 </html>`;
 
 fs.writeFileSync(path.join(docsDir, "index.html"), html);
-console.log(`Built GitHub Pages plugin files for ${baseUrl}/${pluginSlug}`);
+console.log(`Built plugin files for ${baseUrl}/${pluginSlug}`);
