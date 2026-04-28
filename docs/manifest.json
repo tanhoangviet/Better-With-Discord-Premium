@@ -12,5 +12,8 @@
   "source": "https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium/index.js",
   "updateUrl": "https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium/manifest.json",
   "readme": "https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium/README.vi.md",
+  "source": "https://tanhoangviet.github.io/Better-With-Discord-Premium/index.js",
+  "updateUrl": "https://tanhoangviet.github.io/Better-With-Discord-Premium/manifest.json",
+  "readme": "https://tanhoangviet.github.io/Better-With-Discord-Premium/README.vi.md",
   "repository": "https://github.com/tanhoangviet/Better-With-Discord-Premium"
 }

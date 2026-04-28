@@ -31,6 +31,10 @@ Plugin này làm đúng ý bạn cho mobile:
 - Manifest URL chuẩn: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium/manifest.json`
 
 Theo pattern chuẩn giống repo `Lioncat6/revenge-plugins`: `https://<user>.github.io/<repo>/<plugin-folder>`.
+## URL cài plugin (GitHub Pages)
+
+- Base URL: `https://tanhoangviet.github.io/Better-With-Discord-Premium/`
+- Manifest URL: `https://tanhoangviet.github.io/Better-With-Discord-Premium/manifest.json`
 
 Nếu client báo `Failed to fetch manifest`, hãy dùng URL manifest trực tiếp ở trên.
 
