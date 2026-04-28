@@ -1,0 +1,16 @@
+{
+  "name": "Better with Discord Premium",
+  "id": "better-with-discord-premium",
+  "version": "0.2.0",
+  "authors": [
+    {
+      "name": "tanhoangviet"
+    }
+  ],
+  "description": "Mobile plugin that upgrades code blocks with copy buttons, syntax highlighting, and rich text-file previews similar to Discord Desktop.",
+  "main": "index.js",
+  "source": "https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/plugin/index.js",
+  "updateUrl": "https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/plugin/manifest.json",
+  "readme": "https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/plugin/README.vi.md",
+  "repository": "https://github.com/tanhoangviet/Better-With-Discord-Premium"
+}
