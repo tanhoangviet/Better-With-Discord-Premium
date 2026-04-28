@@ -30,3 +30,4 @@ Sau đó push lên `main`, workflow Pages sẽ tự deploy.
 - `dist/Better-with-Discord-Premium-mobile-plugin.zip`: file import plugin (được tạo khi build, không commit vào git)
 
 Xem hướng dẫn chi tiết: `plugin/README.vi.md`.
+idk
