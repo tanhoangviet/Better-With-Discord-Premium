@@ -26,12 +26,17 @@ npm install
 npm run build
 ```
 
-Sau đó push lên `main`/`work`, workflow sẽ build docs và publish lên `gh-pages`.
+`npm run build` sẽ:
+- check + test plugin
+- tạo file zip trong `dist/`
+- build website Pages trong `docs/` theo cấu trúc plugin chuẩn (`/better-with-discord-premium`)
+
+Sau đó push lên `main` (hoặc `work`), workflow Pages sẽ tự deploy.
 
 ## Output
 
-- `docs/better-with-discord-premium/kettu-source.js`: JS source để dán trực tiếp vào Kettu
-- `docs/better-with-discord-premium/kettu-manifest.json`: manifest fallback cho Kettu
 - `docs/better-with-discord-premium/manifest.json`: manifest cho github.io
+- `docs/better-with-discord-premium/kettu-manifest.json`: manifest fallback tối ưu cho Kettu
+- `dist/Better-with-Discord-Premium-mobile-plugin.zip`: file import plugin (được tạo khi build, không commit vào git)
 
 Xem hướng dẫn chi tiết: `plugin/README.vi.md`.
