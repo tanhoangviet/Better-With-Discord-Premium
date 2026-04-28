@@ -25,6 +25,12 @@ Plugin này làm đúng ý bạn cho mobile:
      - Nút **Copy**
      - Nút **Download**
 
+## URL cài plugin (chuẩn theo revenge-plugins)
+
+- Plugin URL chuẩn: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium`
+- Manifest URL chuẩn: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium/manifest.json`
+
+Theo pattern chuẩn giống repo `Lioncat6/revenge-plugins`: `https://<user>.github.io/<repo>/<plugin-folder>`.
 ## URL cài plugin (GitHub Pages)
 
 - Base URL: `https://tanhoangviet.github.io/Better-With-Discord-Premium/`

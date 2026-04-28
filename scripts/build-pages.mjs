@@ -8,6 +8,29 @@ const baseUrl = `https://${owner}.github.io/${name}`;
 const docsDir = path.resolve("docs");
 fs.mkdirSync(docsDir, { recursive: true });
 
+const srcManifest = JSON.parse(fs.readFileSync(path.resolve("plugin/manifest.json"), "utf8"));
+const pluginSlug = srcManifest.id || "better-with-discord-premium";
+const pluginDir = path.join(docsDir, pluginSlug);
+fs.mkdirSync(pluginDir, { recursive: true });
+
+const pluginIndex = fs.readFileSync(path.resolve("plugin/index.js"), "utf8");
+fs.writeFileSync(path.join(pluginDir, "index.js"), pluginIndex);
+
+const pagesManifest = {
+  ...srcManifest,
+  main: "index.js",
+  source: `${baseUrl}/${pluginSlug}/index.js`,
+  updateUrl: `${baseUrl}/${pluginSlug}/manifest.json`,
+  readme: `${baseUrl}/${pluginSlug}/README.vi.md`
+};
+
+// Standard Vendetta/Bunny style: each plugin has its own folder URL.
+fs.writeFileSync(path.join(pluginDir, "manifest.json"), JSON.stringify(pagesManifest, null, 2) + "\n");
+fs.copyFileSync(path.resolve("plugin/README.vi.md"), path.join(pluginDir, "README.vi.md"));
+
+// Backward compatibility for users who used the old root URL.
+fs.writeFileSync(path.join(docsDir, "manifest.json"), JSON.stringify(pagesManifest, null, 2) + "\n");
+fs.writeFileSync(path.join(docsDir, "index.js"), pluginIndex);
 const pluginIndex = fs.readFileSync(path.resolve("plugin/index.js"), "utf8");
 fs.writeFileSync(path.join(docsDir, "index.js"), pluginIndex);
 
@@ -30,6 +53,7 @@ const html = `<!doctype html>
   <title>Better with Discord Premium</title>
   <style>
     body { font-family: system-ui, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 16px; }
+    code, pre { background: #f4f4f5; padding: 2px 6px; border-radius: 6px; overflow: auto; }
     code, pre { background: #f4f4f5; padding: 2px 6px; border-radius: 6px; }
     .box { border: 1px solid #ddd; border-radius: 12px; padding: 16px; }
   </style>
@@ -37,6 +61,11 @@ const html = `<!doctype html>
 <body>
   <h1>Better with Discord Premium</h1>
   <div class="box">
+    <p><strong>Plugin URL chuẩn (Revenge/Bunny/Vendetta):</strong></p>
+    <pre>${baseUrl}/${pluginSlug}</pre>
+    <p><strong>Manifest URL trực tiếp:</strong></p>
+    <pre>${baseUrl}/${pluginSlug}/manifest.json</pre>
+    <p><small>Compatibility URL cũ vẫn hoạt động: ${baseUrl}/manifest.json</small></p>
     <p><strong>Install URL:</strong></p>
     <pre>${baseUrl}/</pre>
     <p>Nếu client yêu cầu URL manifest trực tiếp, dùng:</p>
@@ -46,4 +75,5 @@ const html = `<!doctype html>
 </html>`;
 
 fs.writeFileSync(path.join(docsDir, "index.html"), html);
+console.log(`Built GitHub Pages plugin files for ${baseUrl}/${pluginSlug}`);
 console.log(`Built GitHub Pages files for ${baseUrl}`);
