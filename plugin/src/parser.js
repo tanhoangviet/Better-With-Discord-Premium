@@ -8,19 +8,23 @@ const SUPPORTED_LANGS = new Set([
   "typescript",
   "py",
   "python",
+  "python3",
+  "py3",
   "json",
   "txt",
   "text"
 ]);
 
 const TEXT_EXTENSIONS = new Set([".txt", ".lua", ".js", ".ts", ".py"]);
+const MAX_BLOCKS = 50;
+const MAX_BLOCK_LENGTH = 20000;
 
 function normalizeLanguage(lang) {
   if (!lang) return "text";
   const clean = String(lang).trim().toLowerCase();
   if (clean === "javascript") return "js";
   if (clean === "typescript") return "ts";
-  if (clean === "python") return "py";
+  if (clean === "python" || clean === "python3" || clean === "py3") return "py";
   return clean;
 }
 
@@ -32,9 +36,16 @@ function parseCodeBlocks(messageContent) {
   let match;
 
   while ((match = regex.exec(messageContent)) !== null) {
+    if (blocks.length >= MAX_BLOCKS) break;
+
     const rawLanguage = normalizeLanguage(match[1]);
     const language = SUPPORTED_LANGS.has(rawLanguage) ? rawLanguage : "text";
-    const code = match[2]?.replace(/\n$/, "") ?? "";
+    let code = match[2]?.replace(/\n$/, "") ?? "";
+
+    // Guard large payloads to avoid performance/overflow issues on mobile.
+    if (code.length > MAX_BLOCK_LENGTH) {
+      code = `${code.slice(0, MAX_BLOCK_LENGTH)}\n\n/* Truncated: code block too large */`;
+    }
 
     blocks.push({
       start: match.index,
@@ -80,6 +91,8 @@ function humanFileSize(sizeInBytes) {
 module.exports = {
   SUPPORTED_LANGS,
   TEXT_EXTENSIONS,
+  MAX_BLOCKS,
+  MAX_BLOCK_LENGTH,
   normalizeLanguage,
   parseCodeBlocks,
   getFileExtension,

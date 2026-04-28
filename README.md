@@ -6,9 +6,9 @@ Plugin mobile giúp Discord hiển thị code/text xịn hơn giống desktop.
 
 - **Plugin URL chuẩn:** `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium`
 - **Manifest URL trực tiếp:** `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium/manifest.json`
-- **Compatibility URL cũ:** `https://tanhoangviet.github.io/Better-With-Discord-Premium/manifest.json`
+- **Fallback raw (nếu GitHub Pages chưa publish):** `https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/manifest.json`
 
-> Nếu app báo `Failed to fetch manifest`, hãy dán **Manifest URL trực tiếp** bên trên.
+> Nếu thấy 404 ở `github.io`, thường là do GitHub Pages chưa build xong hoặc chưa bật trong repo settings. Dùng URL raw fallback để test ngay.
 
 ## Deploy lên GitHub
 

@@ -15,6 +15,8 @@ Plugin này làm đúng ý bạn cho mobile:
    - Mỗi block có **nút Copy** để copy full code.
 
 2. **Highlight syntax mở rộng**
+   - Hỗ trợ: `lua`, `js/javascript`, `ts/typescript`, `py/python/python3/py3`, `json`, `txt/text`.
+   - Có normalize alias (`python -> py`, `python3 -> py`, `py3 -> py`, ...).
    - Hỗ trợ: `lua`, `js/javascript`, `ts/typescript`, `py/python`, `json`, `txt/text`.
    - Có normalize alias (`python -> py`, `typescript -> ts`, ...).
 
@@ -25,14 +27,19 @@ Plugin này làm đúng ý bạn cho mobile:
      - Nút **Copy**
      - Nút **Download**
 
+4. **Chống overflow payload lớn**
+   - Giới hạn số block/code quá lớn để tránh lag/overflow trên mobile.
+   - Block quá dài sẽ tự truncate an toàn.
+
 ## URL cài plugin (chuẩn theo revenge-plugins)
 
 - Plugin URL chuẩn: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium`
 - Manifest URL chuẩn: `https://tanhoangviet.github.io/Better-With-Discord-Premium/better-with-discord-premium/manifest.json`
+- Fallback raw: `https://raw.githubusercontent.com/tanhoangviet/Better-With-Discord-Premium/main/docs/better-with-discord-premium/manifest.json`
 
 Theo pattern chuẩn giống repo `Lioncat6/revenge-plugins`: `https://<user>.github.io/<repo>/<plugin-folder>`.
 
-Nếu client báo `Failed to fetch manifest`, hãy dùng URL manifest trực tiếp ở trên.
+Nếu client báo `Failed to fetch manifest` hoặc 404, dùng URL raw fallback để test ngay.
 
 ## Setup nhanh để deploy GitHub
 
