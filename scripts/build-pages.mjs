@@ -4,6 +4,7 @@ import path from "path";
 const repo = process.env.GITHUB_REPOSITORY || "tanhoangviet/Better-With-Discord-Premium";
 const [owner, name] = repo.split("/");
 const baseUrl = `https://${owner}.github.io/${name}`;
+const rawBase = `https://raw.githubusercontent.com/${owner}/${name}/main/docs`;
 
 const docsDir = path.resolve("docs");
 fs.mkdirSync(docsDir, { recursive: true });
@@ -24,12 +25,22 @@ const pagesManifest = {
   readme: `${baseUrl}/${pluginSlug}/README.vi.md`
 };
 
+const rawManifest = {
+  ...srcManifest,
+  main: `${rawBase}/${pluginSlug}/index.js`,
+  source: `${rawBase}/${pluginSlug}/index.js`,
+  updateUrl: `${rawBase}/${pluginSlug}/kettu-manifest.json`,
+  readme: `${rawBase}/${pluginSlug}/README.vi.md`
+};
+
 // Standard Vendetta/Bunny style: each plugin has its own folder URL.
 fs.writeFileSync(path.join(pluginDir, "manifest.json"), JSON.stringify(pagesManifest, null, 2) + "\n");
+fs.writeFileSync(path.join(pluginDir, "kettu-manifest.json"), JSON.stringify(rawManifest, null, 2) + "\n");
 fs.copyFileSync(path.resolve("plugin/README.vi.md"), path.join(pluginDir, "README.vi.md"));
 
-// Backward compatibility for users who used the old root URL.
+// Backward compatibility for users who used old root URLs.
 fs.writeFileSync(path.join(docsDir, "manifest.json"), JSON.stringify(pagesManifest, null, 2) + "\n");
+fs.writeFileSync(path.join(docsDir, "kettu-manifest.json"), JSON.stringify(rawManifest, null, 2) + "\n");
 fs.writeFileSync(path.join(docsDir, "index.js"), pluginIndex);
 fs.copyFileSync(path.resolve("plugin/README.vi.md"), path.join(docsDir, "README.vi.md"));
 
@@ -52,7 +63,8 @@ const html = `<!doctype html>
     <pre>${baseUrl}/${pluginSlug}</pre>
     <p><strong>Manifest URL trực tiếp:</strong></p>
     <pre>${baseUrl}/${pluginSlug}/manifest.json</pre>
-    <p><small>Compatibility URL cũ vẫn hoạt động: ${baseUrl}/manifest.json</small></p>
+    <p><strong>Kettu fallback (không phụ thuộc GitHub Pages):</strong></p>
+    <pre>${rawBase}/${pluginSlug}/kettu-manifest.json</pre>
   </div>
 </body>
 </html>`;

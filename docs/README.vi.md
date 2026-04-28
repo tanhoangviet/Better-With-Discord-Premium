@@ -17,8 +17,6 @@ Plugin này làm đúng ý bạn cho mobile:
 2. **Highlight syntax mở rộng**
    - Hỗ trợ: `lua`, `js/javascript`, `ts/typescript`, `py/python/python3/py3`, `json`, `txt/text`.
    - Có normalize alias (`python -> py`, `python3 -> py`, `py3 -> py`, ...).
-   - Hỗ trợ: `lua`, `js/javascript`, `ts/typescript`, `py/python`, `json`, `txt/text`.
-   - Có normalize alias (`python -> py`, `typescript -> ts`, ...).
 
 3. **Text file preview như desktop**
    - Khi attach các file `.txt`, `.lua`, `.js`, `.ts`, `.py` (hoặc MIME `text/*`), plugin render giao diện header giống desktop:
